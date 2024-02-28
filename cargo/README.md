@@ -56,3 +56,60 @@ cargo run
 ```
 
 ![](./cargo-run.png)
+
+# การเพิ่ม Dependency เข้าไปใน Project
+
+Run command
+
+```sh
+cargo add <dependency>
+```
+
+ตัวอย่าง
+
+```sh
+cargo add ferris-says
+```
+
+![](./cargo-add-ferris-says.png)
+
+เมื่อเราไปเปิดไฟล์ `Cargo.toml` เราจะเห็นว่าตรง Dependencies มีการเพิ่ม `ferris-says = "0.3.1"` เข้าไป
+
+/Cargo.toml
+```
+[package]
+name = "hello-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ferris-says = "0.3.1"
+```
+
+แก้ไข file `/src/main.rs`
+
+/src/main.rs
+
+```rust
+use ferris_says::say; // from the previous step
+use std::io::{stdout, BufWriter};
+
+fn main() {
+    let stdout = stdout();
+    let message = String::from("Hello fellow Rustaceans!");
+    let width = message.chars().count();
+
+    let mut writer = BufWriter::new(stdout.lock());
+    say(&message, width, &mut writer).unwrap();
+}
+```
+
+ลอง Run Project ดูอีกครั้ง
+
+```sh
+cargo run
+```
+
+![](./cargo-run-again.png)
