@@ -4,5 +4,6 @@
 
 - [Installation](./installation/README.md)
 - [Cargo](./cargo/README.md)
+- [ลองเล่นเกมส์เดาตัวเลข](./guessing-game/README.md)
 
 TODO
